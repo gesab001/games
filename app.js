@@ -8,7 +8,8 @@ function loadTitles(data){
 		var poster = jsonItem["poster"]; 
 		var gameurl = jsonItem["gameurl"];
 
-		var itemContainer = document.createElement("DIV");
+		var cardContainer = document.createElement("DIV");
+		cardContainer.className = "cardContainer"; 
 		var gameUrlEl = document.createElement("A");
 		var titleEl = document.createElement("DIV");
 		var gradeLevelEl = document.createElement("DIV");
@@ -17,6 +18,9 @@ function loadTitles(data){
 
 		titleEl.innerHTML = title;
 		titleEl.style.wordWrap = "break-word";	
+		titleEl.className = "title";
+
+		
 
 		
 		gradeLevelEl.innerHTML = gradeLevel;
@@ -25,8 +29,8 @@ function loadTitles(data){
 		gameUrlEl.appendChild(posterEl);
 		gameUrlEl.appendChild(titleEl);
 		gameUrlEl.appendChild(gradeLevelEl);
-		itemContainer.appendChild(gameUrlEl)
-		containerList.appendChild(itemContainer);
+		cardContainer.appendChild(gameUrlEl)
+		containerList.appendChild(cardContainer);
 		
 		
 		
