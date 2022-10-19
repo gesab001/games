@@ -31,6 +31,10 @@ function loadTitles(data){
 		  }
 		  itemEl.innerHTML = labelLink;
 		  itemContainer.href = item + "_grade_"+subject+".html";
+		  if (item==="kindergarten"){
+		     itemContainer.href = item + "_"+subject+".html";
+
+		  }
 		  itemContainer.appendChild(itemEl);
 		  		containerList.appendChild(itemContainer);
 
