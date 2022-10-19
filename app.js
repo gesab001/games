@@ -17,7 +17,6 @@ function loadTitles(data){
 				posterEl.padding = "10px";
 
 		titleEl.innerHTML = title;
-		titleEl.style.wordWrap = "break-word";	
 		titleEl.className = "title";
 
 		
