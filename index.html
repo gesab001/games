@@ -3,21 +3,80 @@
 
 <body>
 
-<h1>Math Games</h1>
-<a href="kindergarten_math_games.html"><h1>Kindergarten Math Games</h1></a>
-
-<a href="third_grade_math_games.html"><h1>Third Grade Math Games</h1></a>
-
-<h1>Word Games</h1>
-
-<a href="first_grade_word_games.html"><h1>First Grade Word Games</h1></a>
-
-<a href="second_grade_word_games.html"><h1>Third Grade Word Games</h1></a>
-
-<a href="third_grade_word_games.html"><h1>Third Grade Word Games</h1></a>
-
+<div id="containerList">
+</div>
 
 </body>
+
+<script>
+function loadTitles(data){
+    console.log("loadtitles");
+	console.log( Object.keys(data).length);
+	var containerList = document.getElementById("containerList");
+	for (subject in data){
+        console.log(subject);
+		var subjEl = document.createElement("H1");
+		subjEl.innerHTML = subject.replace("_", " ").toUpperCase();
+		containerList.appendChild(subjEl);
+		var gamelist = data[subject];
+		console.log(gamelist);
+		for (var x=0; x<gamelist.length; x++){
+		  var item = gamelist[x];
+		  console.log(item);
+		  var itemContainer = document.createElement("A");
+		  var itemEl = document.createElement("H2");
+		  var labelLink = item + " grade " +  subject.replace("_", " ");
+		  if (item==="kindergarten"){
+		    labelLink = item + " " +  subject.replace("_", " ");
+		  }
+		  itemEl.innerHTML = labelLink;
+		  itemContainer.href = item + "_grade_"+subject+".html";
+		  itemContainer.appendChild(itemEl);
+		  		containerList.appendChild(itemContainer);
+
+		}
+/*
+		var cardContainer = document.createElement("DIV");
+		cardContainer.className = "cardContainer"; 
+		var gameUrlEl = document.createElement("A");
+		var titleEl = document.createElement("DIV");
+		var gradeLevelEl = document.createElement("DIV");
+		var posterEl = document.createElement("IMG");
+				posterEl.padding = "10px";
+
+		titleEl.innerHTML = title;
+		titleEl.className = "title";
+
+		
+
+		
+		gradeLevelEl.innerHTML = gradeLevel;
+		posterEl.src = poster;
+		gameUrlEl.href =  gameurl;
+		gameUrlEl.appendChild(posterEl);
+		gameUrlEl.appendChild(titleEl);
+		gameUrlEl.appendChild(gradeLevelEl);
+		cardContainer.appendChild(gameUrlEl)
+		containerList.appendChild(cardContainer);
+		
+	*/	
+		
+
+	}
+	
+}
+
+function fetchTitles(filename){
+	console.log("fetchTitles");
+fetch(filename)
+  .then((response) => response.json())
+  .then(loadTitles);
+  
+}
+
+
+fetchTitles("games.json");
+</script>
 
 
 </html>
